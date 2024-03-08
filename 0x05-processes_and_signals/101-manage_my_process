@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+# Manages the daemon script, `manage_my_process`
+
+if [ $# -ne 1 ] || [ "$1" != 'start' ] && [ "$1" != 'stop' ] && [ "$1" != 'restart' ]; then
+	echo "Usage: manage_my_process {start|stop|restart}"
+	exit 1
+fi
+
+case $1 in
+"start")
+	# Start the process
+	./manage_my_process &
+	echo "$!" >/var/run/my_process.pid
+	# Display message
+	echo "manage_my_process started"
+	;;
+"stop")
+	# Stop currently running process
+	# shellcheck disable=SC2009
+	pid=$(ps aux | grep 'manage_my_process' | head -n 1 | tr -s ' ' | cut -d ' ' -f 2)
+	sudo kill "$pid"
+	rm -rf /var/run/my_process.pid
+	# Display message
+	echo "manage_my_process stopped"
+	;;
+"restart")
+	# Stop currently runnig process
+	# shellcheck disable=SC2009
+	pid=$(ps aux | grep 'manage_my_process' | head -n 1 | tr -s ' ' | cut -d ' ' -f 2)
+	sudo kill "$pid"
+	rm -rf /var/run/my_process.pid
+	# Restart the process
+	./manage_my_process &
+	echo "$!" >/var/run/my_process.pid
+	# Display message
+	echo "manage_my_process restarted"
+	;;
+esac

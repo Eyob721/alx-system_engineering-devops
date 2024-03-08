@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# A simple daemon exercise script
+
+if [ -e /tmp/my_process ]
+then
+	sudo rm -rf /tmp/my_process
+fi
+
+while true;
+do
+	echo 'I am alive!' >> /tmp/my_process
+	sleep 2
+done
