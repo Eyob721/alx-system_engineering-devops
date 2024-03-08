@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script parses the `access-access.log` file and groups the visitors by IP
+# and HTTP status code.
+
+var=$(awk '{print $1" "$9}' apache-access.log)
+if [ -s ./apache-access.log ];
+then
+	echo "$var" | sort | uniq -c | sort -nr
+fi
