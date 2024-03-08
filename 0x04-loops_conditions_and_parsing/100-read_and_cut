@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script displays only the username, user id and home directory fields
+# of the file `/etc/passwd`
+
+while read -r passwd
+do
+    select_content=$(echo "$passwd" | cut -d : -f 1,3,6)
+    echo "$select_content"
+done < "/etc/passwd"
