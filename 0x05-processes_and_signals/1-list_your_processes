@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script displays a list of currently running processes
+ps auxf --sort=pid
+
+# a = show all processes
+# u = show user oriented list
+# x = use BSD syntax
+# f = show process hierarchy, using ascii art
