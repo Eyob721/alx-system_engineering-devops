@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Configures the host file of a Ubuntu server
+
+HOSTS_TMP=~/hosts.tmp # file for making temporary change
+
+if [ -e /etc/hosts ]; then
+
+	# make a temporary copy
+	cp -f /etc/hosts $HOSTS_TMP
+
+	# shellcheck disable=SC2046
+	if [ $(grep -c "localhost" $HOSTS_TMP) -ge 1 ]; then
+		sed -i 's/^[0-9].*localhost/127.0.0.2\ localhost/' $HOSTS_TMP
+	else
+		echo '127.0.0.2 localhost' >>$HOSTS_TMP
+	fi
+
+	# shellcheck disable=SC2046
+	if [ $(grep -c "facebook" $HOSTS_TMP) -ge 1 ]; then
+		sed -i 's/^[0-9].*facebook.com/8.8.8.8\ facebook.com/' $HOSTS_TMP
+	else
+		echo '8.8.8.8 facebook.com' >>$HOSTS_TMP
+	fi
+
+else
+	echo "127.0.0.2 localhost
+	8.8.8.8 facebook.com" >$HOSTS_TMP
+fi
+cp -f $HOSTS_TMP /etc/hosts
