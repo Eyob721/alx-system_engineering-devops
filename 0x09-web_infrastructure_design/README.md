@@ -81,3 +81,18 @@ www.foobar.com.     A        8.8.8.8
   - In the case of too much traffic it will be difficult to scale the system.
   - It does not have any security infrastructure and so is vulnerable to a
     cyber attack.
+
+### Distributed web infrastructure design
+
+File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)<br>
+URL: [https://imgur.com/a/Txy8eKb](https://imgur.com/a/Txy8eKb)
+
+- This design builds upon the simple web stack design by adding two more
+  servers and in total making it a three server web infrastructure design.
+- So the following requirements are added to the previous one:
+  - 2 servers
+  - 1 web server (Nginx)
+  - 1 application server
+  - 1 load-balancer (HAproxy)
+  - 1 application files (codebase)
+  - 1 database (MySQL)
