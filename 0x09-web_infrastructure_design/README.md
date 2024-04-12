@@ -94,3 +94,9 @@ File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)
   - 1 load-balancer (HAproxy)
   - 1 application files (codebase)
   - 1 database (MySQL)
+
+### Secured and monitored web infrastructure
+
+File: [2-secured_and_monitored_web_infrastructure](./2-secured_and_monitored_web_infrastructure)
+
+[2-secured_and_monitored_web_infrastructure](./images/2-secured_and_monitored_web_infrastructure.png)
