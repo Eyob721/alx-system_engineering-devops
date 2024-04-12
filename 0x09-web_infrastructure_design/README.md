@@ -6,7 +6,14 @@ The files contain the url to the drawing. The drawings are hosted on [imgur](htt
 
 ## Mandatory
 
-[0-simple_web_stack](./0-simple_web_stack)
+### Simple web stack
+
+File: [0-simple_web_stack](./0-simple_web_stack)<br>
+URL: [https://i.imgur.com/TTGELZZ.png](https://i.imgur.com/TTGELZZ.png)
+
+<img src="https://i.imgur.com/TTGELZZ"
+alt="A one server web infrastructure design"
+title="imugr/papi721: A one server web infrastructure design" />
 
 - This is a simple web infrastructure design that uses a single physical server
   with a LAMP stack.
