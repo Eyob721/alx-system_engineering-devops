@@ -100,3 +100,9 @@ File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)
 File: [2-secured_and_monitored_web_infrastructure](./2-secured_and_monitored_web_infrastructure)
 
 [2-secured_and_monitored_web_infrastructure](./images/2-secured_and_monitored_web_infrastructure.png)
+
+### Scale up
+
+File: [3-scale_up](./3-scale_up)
+
+[3-scale_up](./images/3-scale_up.png)
