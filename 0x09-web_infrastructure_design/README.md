@@ -8,12 +8,9 @@ The files contain the url to the drawing. The drawings are hosted on [imgur](htt
 
 ### Simple web stack
 
-File: [0-simple_web_stack](./0-simple_web_stack)<br>
-URL: [https://i.imgur.com/TTGELZZ.png](https://i.imgur.com/TTGELZZ.png)
+File: [0-simple_web_stack](./0-simple_web_stack)
 
-<img src="https://i.imgur.com/TTGELZZ"
-alt="A one server web infrastructure design"
-title="imugr/papi721: A one server web infrastructure design" />
+![0-simple_web_stack](./images/0-simple_web_stack.png)
 
 - This is a simple web infrastructure design that uses a single physical server
   with a LAMP stack.
@@ -84,8 +81,9 @@ www.foobar.com.     A        8.8.8.8
 
 ### Distributed web infrastructure design
 
-File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)<br>
-URL: [https://imgur.com/a/Txy8eKb](https://imgur.com/a/Txy8eKb)
+File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)
+
+![1-distributed_web_infrastructure](./images/1-distributed_web_infrastructure.png)
 
 - This design builds upon the simple web stack design by adding two more
   servers and in total making it a three server web infrastructure design.
