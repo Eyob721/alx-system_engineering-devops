@@ -21,6 +21,15 @@ The files contain the url to the drawing. The drawings are hosted on [imgur](htt
   - 1 domain name foobar.com configured with a www record that points to the
     server IP 8.8.8.8
 
+- DNS configuration
+
+```DNS
+NAME                TYPE     VALUE
+--------------------------------------------
+www.                CNAME    www.foobar.com.
+www.foobar.com.     A        8.8.8.8
+```
+
 - Explanation
 
   - User request
@@ -65,12 +74,3 @@ The files contain the url to the drawing. The drawings are hosted on [imgur](htt
   - In the case of too much traffic it will be difficult to scale the system.
   - It does not have any security infrastructure and so is vulnerable to a
     cyber attack.
-
-- DNS configuration
-
-```DNS
-NAME                TYPE     VALUE
---------------------------------------------
-www.                CNAME    www.foobar.com.
-www.foobar.com.     A        8.8.8.8
-```
