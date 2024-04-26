@@ -140,6 +140,40 @@ File: [2-secured_and_monitored_web_infrastructure](./2-secured_and_monitored_web
 
 ![2-secured_and_monitored_web_infrastructure](./images/2-secured_and_monitored_web_infrastructure.png)
 
+This builds upon the distributed web infrastructure design by adding firewalls,
+a SSL certificate and monitoring devices.
+
+- Additional components
+  - 3 firewalls
+  - 1 SSL certificate to serve `www.foobar.com` over HTTPS
+  - 3 monitoring clients (data collector for Sumologic or other monitoring services)
+- Explanation
+  - A firewall is a network security device or software that monitors incoming
+    and outgoing network traffic and permits or blocks data packets based on a
+    set of security rules.
+  - A SSL certificate is used to establish a secure and encrypted connection
+    over the internet. This allows the use of HTTPS pages instead of HTTP.
+  - Monitoring devices allow us to gauge the performance and status of our
+    servers. In this design 3 monitoring devices are added, one for each linux
+    server and one for the load balancer.
+  - Monitoring tools like Sumo Logic can collect metrics, log data and network
+    flows by installing agents on the server which continuously collect log
+    data and metrics and send the log files back to the monitoring device.
+  - Sumo Logic can also be setup to monitor the QPS of the web server. QPS
+    stands for Query Per Second and it refers to the number of requests or
+    queries the server can handle per second. It is a measure of how much
+    traffic the server can handle.
+- Issues with the design
+  - In this design it is seen that there is only a single point of encryption at
+    the load balancer level, and the issue with that is all the internal networks
+    are unencrypted which make the system vulnerable to internal threats.
+  - There is only one database, the Primary database, which can accept write requests.
+    The issue with this is that in the case where there are heavy write requests
+    the system will become slow and unresponsive.
+  - Having servers with all the same components (database, web server, and
+    application server) can cause issues with maintenance and scalability as
+    each component is independent.
+
 ### Scale up
 
 File: [3-scale_up](./3-scale_up)
