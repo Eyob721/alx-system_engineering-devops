@@ -32,7 +32,7 @@ www.                CNAME    www.foobar.com.
 www.foobar.com.     A        8.8.8.8
 ```
 
-- Explanation
+- Explanation:
   - User request
     - User searches for the `www.foobar.com` or `www` in the browser.
   - DNS Resolution
@@ -64,7 +64,7 @@ www.foobar.com.     A        8.8.8.8
       static or dynamic, it responds back to the user browser with a
       HTTP response, which contains the HTML webpage.
     - Then the user browser renders or displays the HTML webpage to the user.
-- Issues with this infrastructure design
+- Issues with this design:
   - It has a single point of failure (SPOF). It doesn't provide any redundancy
     at all so if one of the servers crashed or if power goes out the whole system
     is out.
@@ -83,14 +83,14 @@ File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)
 This design builds upon the simple web stack design by adding two more
 servers and in total making it a three server web infrastructure design.
 
-- Additional components
+- Additional Requirements:
   - 2 servers
   - 1 web server (Nginx)
   - 1 application server
   - 1 load-balancer (HAproxy)
   - 1 set of application files (your code base)
   - 1 database (MySQL)
-- Explanation
+- Explanation:
   - In this design two more physical servers are added. One server acts as a
     load balancer and the other one will be an additional linux server used
     for hosting the website.
@@ -123,7 +123,7 @@ servers and in total making it a three server web infrastructure design.
       replicates the query to the Replica databases.
     - One advantage of such a setup is that if the Primary database fails the
       Replica database can immediately take over as the new Primary.
-  - Issues with this infrastructure
+  - Issues with this design:
     - While the use of a load balancer and an additional linux server improves
       availability and minimize downtime. There is still a single point of
       failure, that being there is a single load balancer. If the load balancer
@@ -143,11 +143,11 @@ File: [2-secured_and_monitored_web_infrastructure](./2-secured_and_monitored_web
 This builds upon the distributed web infrastructure design by adding firewalls,
 a SSL certificate and monitoring devices.
 
-- Additional components
+- Additional Requirements:
   - 3 firewalls
   - 1 SSL certificate to serve `www.foobar.com` over HTTPS
   - 3 monitoring clients (data collector for Sumologic or other monitoring services)
-- Explanation
+- Explanation:
   - A firewall is a network security device or software that monitors incoming
     and outgoing network traffic and permits or blocks data packets based on a
     set of security rules.
@@ -163,7 +163,7 @@ a SSL certificate and monitoring devices.
     stands for Query Per Second and it refers to the number of requests or
     queries the server can handle per second. It is a measure of how much
     traffic the server can handle.
-- Issues with the design
+- Issues with this design:
   - In this design it is seen that there is only a single point of encryption at
     the load balancer level, and the issue with that is all the internal networks
     are unencrypted which make the system vulnerable to internal threats.
