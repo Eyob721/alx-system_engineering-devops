@@ -174,8 +174,28 @@ a SSL certificate and monitoring devices.
     application server) can cause issues with maintenance and scalability as
     each component is independent.
 
+## Advanced
+
 ### Scale up
 
 File: [3-scale_up](./3-scale_up)
 
 ![3-scale_up](./images/3-scale_up.png)
+
+In this design we scale up the three server design by adding a load balancer
+and separating each component (web server, application server and database server)
+in to their own servers.
+
+- Additional Requirements:
+  - 1 server
+  - 1 load-balancer (HAproxy) configured as cluster with the other one
+  - Split components (web server, application server, database) with their own server
+- Explanation:
+  - One additional load balancer is added working in cluster with the other
+    one. This ensures high availability, maintainability and redundancy to the
+    system.
+  - In the previous designs the web server, application server and database
+    server were stored in independent servers. In this design each component have
+    its own server. Meaning that each component (web server, application server
+    and database server) are in their own servers.
+  - This makes it easier to maintain, monitor and scale up the system.
