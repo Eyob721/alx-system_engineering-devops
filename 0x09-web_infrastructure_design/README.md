@@ -74,21 +74,65 @@ www.foobar.com.     A        8.8.8.8
   - It does not have any security infrastructure and so is vulnerable to a
     cyber attack.
 
-### Distributed web infrastructure design
+### Distributed web infrastructure
 
 File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)
 
 ![1-distributed_web_infrastructure](./images/1-distributed_web_infrastructure.png)
 
-- This design builds upon the simple web stack design by adding two more
-  servers and in total making it a three server web infrastructure design.
-- So the following requirements are added to the previous one:
+This design builds upon the simple web stack design by adding two more
+servers and in total making it a three server web infrastructure design.
+
+- Additional components
   - 2 servers
   - 1 web server (Nginx)
   - 1 application server
   - 1 load-balancer (HAproxy)
-  - 1 application files (codebase)
+  - 1 set of application files (your code base)
   - 1 database (MySQL)
+- Explanation
+  - In this design two more physical servers are added. One server acts as a
+    load balancer and the other one will be an additional linux server used
+    for hosting the website.
+  - The load balancer will be used to manage traffic load between the two linux
+    servers by using an Active-Active setup and a Least connection algorithm.
+    This enables us to handle more traffic concurrently, ensure high availability
+    and minimize downtime.
+    - In an Active-Active setup the two servers are active and are handling HTTP
+      requests. This setup is relatively more complex to setup but it ensures
+      high availability and it also makes scalability easier. This setup is
+      ideal for applications that require high availability and no downtime.
+    - An alternative setup is Active-Passive setup, where one server handles all
+      traffic and the other is in a passive state waiting to take over when the active
+      server is down. This setup is relatively simpler and cost effective but there
+      is a possible downtime because when the active server is down the passive
+      server might take some time to be active. This setup is ideal for small
+      organizations and for applications where a small amount of downtime is tolerated.
+    - Least connection algorithm is a load balancing algorithm where the load
+      balancer routes traffic to the server with the least connection. This
+      provides balance in traffic load between the two servers is more dynamic.
+  - The databases are setup in a Primary-Replica cluster.
+    - The Primary database is used as the authoritative database that handles
+      write and read operations.
+    - The Replica database is used as a replica of the primary database and
+      handle only read operations. This increases performance by decreasing load
+      on the Primary database.
+    - So the way the Primary-Replica clustering works is the Primary will be the
+      authoritative database and all the other databases will be a replica of the
+      Primary. Whenever a write operation is conducted the primary database
+      replicates the query to the Replica databases.
+    - One advantage of such a setup is that if the Primary database fails the
+      Replica database can immediately take over as the new Primary.
+  - Issues with this infrastructure
+    - While the use of a load balancer and an additional linux server improves
+      availability and minimize downtime. There is still a single point of
+      failure, that being there is a single load balancer. If the load balancer
+      fails the entire system becomes inaccessible even if the linux servers are
+      operational.
+    - The system doesn't have any security measures setup so it vulnerable to
+      cyber attacks.
+    - It also doesn't have any monitoring devices, so it is hard to know
+      the performance and state of our system.
 
 ### Secured and monitored web infrastructure
 
