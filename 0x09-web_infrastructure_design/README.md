@@ -12,11 +12,10 @@ File: [0-simple_web_stack](./0-simple_web_stack)
 
 ![0-simple_web_stack](./images/0-simple_web_stack.png)
 
-- This is a simple web infrastructure design that uses a single physical server
-  with a LAMP stack.
+This is a simple web infrastructure design that uses a single physical server
+with a LAMP stack.
 
 - Requirements:
-
   - 1 server
   - 1 web server (Nginx)
   - 1 application server
@@ -24,10 +23,9 @@ File: [0-simple_web_stack](./0-simple_web_stack)
   - 1 database (MySQL)
   - 1 domain name foobar.com configured with a www record that points to the
     server IP 8.8.8.8
-
 - DNS configuration
 
-```DNS
+```txt
 NAME                TYPE     VALUE
 --------------------------------------------
 www.                CNAME    www.foobar.com.
@@ -35,16 +33,15 @@ www.foobar.com.     A        8.8.8.8
 ```
 
 - Explanation
-
   - User request
-    - User searches for the `www.foobar.com` or `www` in the browser.
+    - User searches for the `www.foobar.com` or `www` in the browser.
   - DNS Resolution
-    - The url `www.foobar.com` or `www` will be resolved to the IP address
-      `8.8.8.8`, because the DNS on the server is configured with the DNS A
-      record for `www.foobar.com` and the DNS CNAME record for `www` as an
-      alias to `www.foobar.com`.
+    - The url `www.foobar.com` or `www` will be resolved to the IP address
+      `8.8.8.8`, because the DNS on the server is configured with the DNS
+      A record for `www.foobar.com` and the DNS CNAME record for `www` as
+      an alias to `www.foobar.com`.
   - Web server (Nginx)
-    - The browser sends an HTTP request to the IP address `8.8.8.8`.
+    - The browser sends an HTTP request to the IP address `8.8.8.8`.
     - The web server (Nginx) receives the HTTP request as it is configured to
       listen for incoming connections and processes the request.
   - Static content
@@ -55,24 +52,22 @@ www.foobar.com.     A        8.8.8.8
     - If the request is for a dynamic content then the web server will delegate
       the task to the application server.
     - The application server will process the server-side scripting based on
-      the configured business logic, and in doing so it might fetch or store
-      data from/on the database server (MySQL).
+      the configured business logic, and in doing so it might fetch/store data
+      from/on the database server (MySQL).
     - After the application server finishes the server-side scripting it builds
-      the dynamic HTML content by stitching together the base HTML structure
-      in the code base and processed data on the application server.
+      the dynamic HTML content by stitching together the base HTML structure in
+      the code base and processed data on the application server.
     - After that the application server sends the dynamically generated HTML
       to the web server.
   - Response to the User
     - So after the web server gets the generated HTML content, whether it be
-      static or dynamic, it responds back to the user browser with a HTTP
-      Response, which contains the HTML webpage.
+      static or dynamic, it responds back to the user browser with a
+      HTTP response, which contains the HTML webpage.
     - Then the user browser renders or displays the HTML webpage to the user.
-
-- Issues with the infrastructure
-
-  - It has a single point of failure (SPOF). It doesn't provide any
-    redundancy at all so if one of the servers crashed or if power goes out
-    the whole system is out.
+- Issues with this infrastructure design
+  - It has a single point of failure (SPOF). It doesn't provide any redundancy
+    at all so if one of the servers crashed or if power goes out the whole system
+    is out.
   - The whole system has to go down in order to conduct a maintenance
     operation, or deploy a new code.
   - In the case of too much traffic it will be difficult to scale the system.
@@ -99,10 +94,10 @@ File: [1-distributed_web_infrastructure](./1-distributed_web_infrastructure)
 
 File: [2-secured_and_monitored_web_infrastructure](./2-secured_and_monitored_web_infrastructure)
 
-[2-secured_and_monitored_web_infrastructure](./images/2-secured_and_monitored_web_infrastructure.png)
+![2-secured_and_monitored_web_infrastructure](./images/2-secured_and_monitored_web_infrastructure.png)
 
 ### Scale up
 
 File: [3-scale_up](./3-scale_up)
 
-[3-scale_up](./images/3-scale_up.png)
+![3-scale_up](./images/3-scale_up.png)
