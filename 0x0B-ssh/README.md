@@ -29,3 +29,13 @@ Using the server we learn about the Secure Shell Protocol.
   - SSH client must be configured:
     - to use the private key `~/.ssh/school`
     - to refuse to authenticate using a password
+
+## Advanced
+
+[100-puppet_ssh_config.pp](./100-puppet_ssh_config.pp)
+
+- A Puppet manifest to make changes to the SSH client configuration file.
+- Requirements:
+  - SSH client must be configured:
+    - to use the private key `~/.ssh/school`
+    - to refuse to authenticate using a password
