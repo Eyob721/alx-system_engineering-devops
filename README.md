@@ -13,6 +13,7 @@
 - [0x08. Networking basics](./0x08-networking_basics_2)
 - [0x09. Web infrastructure design](./0x09-web_infrastructure_design/)
 - [0x0A. Configuration management](./0x0A-configuration_management/)
+- [0x0B. SSH](./0x0B-ssh/)
 
 ## Optionals
 
