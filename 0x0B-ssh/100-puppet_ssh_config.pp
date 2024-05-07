@@ -1,11 +1,15 @@
+# SSH client configuration
+include stdlib
 $ssh_path='/etc/ssh/ssh_config'
 
 file_line { 'Turn off passwd auth':
-    path => $ssh_path,
-    line => 'PasswordAuthentication no',
+    ensure => present,
+    path   => $ssh_path,
+    line   => 'PasswordAuthentication no',
 }
 
 file_line { 'Declare identity file':
-    path => $ssh_path,
-    line => 'IdentityFile ~/.ssh/school',
+    ensure => present,
+    path   => $ssh_path,
+    line   => 'IdentityFile ~/.ssh/school',
 }
