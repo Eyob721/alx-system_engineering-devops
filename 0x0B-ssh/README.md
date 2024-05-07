@@ -21,3 +21,11 @@ Using the server we learn about the Secure Shell Protocol.
   - Name of the created private key must be `school`
   - Number of bits in the created key to be created `4096`
   - The created key must be protected by the passphrase `betty`
+
+[2-ssh_config](./2-ssh_config)
+
+- A SSH configuration file for a local SSH client.
+- Requirements:
+  - SSH client must be configured:
+    - to use the private key `~/.ssh/school`
+    - to refuse to authenticate using a password
