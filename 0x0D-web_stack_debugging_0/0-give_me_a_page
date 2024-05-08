@@ -2,3 +2,4 @@
 # The problem with the container was that apache2 was installed but it wasn't
 # running yet, so we need to start the apache service
 sudo service apache2 start
+echo "Hello Holberton" >/var/www/html/index.html
